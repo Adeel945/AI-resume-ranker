@@ -11,18 +11,21 @@ async function sendData() {
   reader.onload = async function () {
     let base64 = reader.result.split(",")[1];
 
-    let response = await fetch("YOUR-AZURE-FUNCTION-URL/api/rank", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        jd: jd,
-        cv: base64
-      })
-    });
+    let response = await fetch(
+      "https://ai-resume-ranker-api.agreeablemoss-8b0ec043.uksouth.azurecontainerapps.io/api/rank",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          jd: jd,
+          cv: base64
+        })
+      }
+    );
 
-    let data = await response.json();
-    document.getElementById("output").innerText =
-      JSON.stringify(data, null, 2);
+    let result = await response.json();
+    console.log(result);
+    alert("Response received! Check console for details.");
   };
 
   reader.readAsDataURL(file);
