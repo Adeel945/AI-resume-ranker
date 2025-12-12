@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Resume Ranker</title>
+  <title>AI Resume Ranker</title>
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 700px;
+      margin: 40px auto;
+    }
+    #result-box {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      display: none;
+      white-space: pre-wrap;
+    }
+    #loading {
+      display: none;
+      font-weight: bold;
+      color: blue;
+    }
+  </style>
 </head>
+
 <body>
+
 <h2>AI Resume Ranker</h2>
 
-<textarea id="jd" placeholder="Paste Job Description Here" rows="10" cols="50"></textarea><br><br>
+<textarea id="jd" placeholder="Paste Job Description Here" rows="8" style="width:100%;"></textarea><br><br>
 
 <input type="file" id="cv"><br><br>
 
 <button onclick="sendData()">Analyse</button>
 
-<pre id="output"></pre>
+<p id="loading">⏳ Processing… please wait</p>
+
+<div id="result-box"></div>
 
 <script src="index.js"></script>
+
 </body>
 </html>
